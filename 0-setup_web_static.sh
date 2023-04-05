@@ -2,8 +2,8 @@
 #Bash script that sets up your web servers for the deployment of web_static
 
 #installing and updating nginx
-sudo apt install nginx
-sudo apt update nginx -y
+sudo apt-get update
+sudo apt-get install nginx -y
 
 #creating needed folders
 sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
