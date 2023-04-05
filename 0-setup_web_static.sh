@@ -24,7 +24,7 @@ EOF
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 #changing ownership
-sudo chwon -R ubuntu:ubuntu /data/
+sudo chown -R ubuntu:ubuntu /data/
 
 #server set up
 sudo tee -a /etc/nginx/sites-available/default > /dev/null << EOF
