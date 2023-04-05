@@ -1,32 +1,37 @@
 #!/usr/bin/env bash
-# Installing and configuring ngnix for Airbnb webstatic
+#Bash script that sets up your web servers for the deployment of web_static
 
-#installing nginx
-sudo apt-get update
-sudo apt-get install nginx -y
+#installing and updating nginx
+sudo apt install nginx
+sudo apt update nginx -y
 
-#creating respositories if they dont exisit
-sudo mkdir -p /data/web_static/releases/test/
-sudo mkdir -p /data/web_static/shared/
+#creating needed folders
+sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
 
-#test html file
-echo "<!DOCTYPE html>
+#dummy html file
+sudo tee /data/web_static/releases/test/index.html <<EOF
+<!DOCTYPE html>
 <html>
   <head>
   </head>
   <body>
     Holberton School
   </body>
-</html>" | sudo tee /data/web_static/releases/test/index.html
+</html>
+EOF
 
-#symbolic link
+# creating symbolic link between the files
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-#changing directory name
-sudo chown -R ubuntu:ubuntu /data/
+#changing ownership
+sudo chwon -R ubuntu:ubuntu /data/
 
-#updating root directory
-sudo sed -i '/server_name _;/a \ \tlocation /hbnb_static {\n\t\talias /data/web_static/current;\n\t}\n' /etc/nginx/sites-available/default
+#server set up
+sudo tee -a /etc/nginx/sites-available/default > /dev/null << EOF
+        location /hbnb_static {
+                alias /data/web_static/current;
+        }
+EOF
 
-#restarting server
+#restarting nginx
 sudo service nginx restart
