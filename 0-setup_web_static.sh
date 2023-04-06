@@ -10,13 +10,13 @@ sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
 
 #dummy html file
 #dummy html file
-dummy_html='''<html>
+dummy_html="<html>
     <head>
     </head>
     <body>
         Holberton School
     </body>
-</html>'''
+</html>"
 sudo tee /data/web_static/current/index.html <<< "$dummy_html"
 
 # creating symbolic link between the files
