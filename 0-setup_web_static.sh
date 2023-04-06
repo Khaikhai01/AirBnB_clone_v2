@@ -9,16 +9,7 @@ sudo apt-get install nginx -y
 sudo mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
 
 #dummy html file
-sudo tee /data/web_static/releases/test/index.html <<EOF
-<!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    Holberton School
-  </body>
-</html>
-EOF
+sudo tee /data/web_static/releases/test/index.html <<< "Holberton School"
 
 # creating symbolic link between the files
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
