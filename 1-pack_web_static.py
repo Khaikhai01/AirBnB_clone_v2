@@ -15,11 +15,11 @@ def do_pack():
     local('mkdir -p versions')
 
     '''tar && gzip creation'''
-    archieve_name = f'web_static_{timestamp}.tgz'
-    res = local(f'tar -cvzf versions/{archive_name} web_static')
+    archive_name = "web_static_{}.tgz".format(timestamp)
+    res = local("tar -cvzf versions/{} web_static".format(archive_name))
 
     '''return the archive path if the archive has been correctly generated'''
-    if result.succeeded:
-        return f'versions/{archive_name}'
+    if res.succeeded:
+        return "versions/{}".format(archive_name)
     else:
         return None
