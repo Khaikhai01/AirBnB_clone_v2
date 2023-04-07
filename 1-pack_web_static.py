@@ -6,6 +6,7 @@ of the web_static folder of the AirBnB Clone'''
 from datetime import datetime
 from fabric.api import local
 
+
 def do_pack():
     '''archive creation'''
     current_time = datetime.now()
