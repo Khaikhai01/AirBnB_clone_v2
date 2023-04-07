@@ -1,20 +1,21 @@
-#!/usr/bin/python3   
+#!/usr/bin/python3
 from fabric.api import env, put, run
 import os.path
- 
+
 env.hosts = ["100.25.204.11", "52.3.245.182"]
 env.private_key = '~/.ssh/school'
 env.usr_name = 'ubuntu'
+
 
 def do_deploy(archive_path):
     ''' checking is file path exists'''
     if not os.path.isfile(archive_path):
         return False
     compressed = archive_path.split("/")[-1]
-    uncompressed_path = compressed.split(".")[0]
-   
+    uncompressed = compressed.split(".")[0]
+
     try:
-        remote_folder = "/data/web_static/releases/{}/".format(uncompressed_path)
+        remote_folder = "/data/web_static/releases/{}/".format(uncompressed)
 
         symbolic_conn = "/data/web_static/current"
 
