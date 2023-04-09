@@ -16,7 +16,7 @@ dummy_html="<html>
         Holberton School
     </body>
 </html>"
-sudo tee /data/web_static/current/index.html <<< "$dummy_html"
+sudo tee /data/web_static/releases/test/index.html <<< "$dummy_html"
 
 # creating symbolic link between the files
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
