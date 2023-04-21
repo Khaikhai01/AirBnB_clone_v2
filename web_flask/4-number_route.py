@@ -21,22 +21,20 @@ def hbnb_index():
 @app.route('/c/<text>', strict_slashes=False)
 def text_index(text):
     '''dispalys C followed by the value of the text'''
-    new_text = text.replace("_", " ")
-    return f'C {new_text}'
+    return 'C ' + text.replace('_', ' ')
 
 
 @app.route('/python/<text>', strict_slashes=False)
 @app.route('/python/', strict_slashes=False)
 def python_index(text='is cool'):
     ''' displays python followed by value of text'''
-    new_text = text.replace('_', ' ')
-    return f'Python {new_text}'
+    return 'Python ' + text.replace('_', ' ')
 
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def num_index(n):
     '''displays n is a number only if n is an integer'''
-    return f'{n} is a number'
+    return '{} is a number'.format(n)
 
 
 if __name__ == "__main__":
