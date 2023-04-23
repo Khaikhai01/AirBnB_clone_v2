@@ -40,7 +40,7 @@ def num_index(n):
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def template_index(n):
     '''displays n is a HTML page only if n is an integer'''
-    return render_template('5-number.html')
+    return render_template('5-number.html' index_num=n)
 
 
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
