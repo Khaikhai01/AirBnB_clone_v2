@@ -4,6 +4,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from os import getenv
+from models.city import City
 
 
 class State(BaseModel, Base):
@@ -19,4 +20,9 @@ class State(BaseModel, Base):
             """Return the list of City instances with
             state_id equals to the current State.id
             """
-            return [city for city in self.cities]
+            from models import storage
+            list_cities = []
+            for city in storage.all(City).values():
+                if city.state_id == self.id:
+                    list_cities.append(city)
+            return list_cities 
