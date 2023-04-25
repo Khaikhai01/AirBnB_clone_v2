@@ -20,7 +20,7 @@ class DBStorage():
     def __init__(self):
         """ initiliazes the class """
         DBStorage.__engine = create_engine(
-             f'mysql+mysqldb://{user}:{password}@{host}/{database}',
+	    'mysql+mysqldb://{}:{}@{}/{}'.format(user, password, host, database),
              pool_pre_ping=True
         )
         hbnd_env = os.environ.get('HBNB_ENV')
